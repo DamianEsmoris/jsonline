@@ -18,11 +18,12 @@ document.querySelector("#langs").addEventListener("click", (e) => {
     selectedLanguage = e.target.getAttribute("lang");
     localStorage.setItem("lang", selectedLanguage);
     e.target.classList.add("selected");
+    document.title = selectedLanguage + " Online Editor";
   });
 
   editor.session.setMode(LANGUAGES[selectedLanguage]);
   if (last != selectedLanguage)
-    appendOutput(`# language changed ${selectedLanguage} <- ${last}`);
+    appendOutput(`\n\n# language changed ${selectedLanguage} <- ${last}`, 0);
 });
 
 const execute = async () => {
@@ -45,24 +46,24 @@ const execute = async () => {
 };
 
 (() => {
-  if (localStorage.getItem("code")) {
+  if (localStorage.getItem("code"))
     editor.insert(localStorage.getItem("code").trim());
 
-    selectedLanguage = localStorage.getItem("lang");
-    if (!selectedLanguage) selectedLanguage = "js";
-    editor.session.setMode(LANGUAGES[selectedLanguage]);
+  selectedLanguage = localStorage.getItem("lang");
+  if (!selectedLanguage) selectedLanguage = "JS";
+  editor.session.setMode(LANGUAGES[selectedLanguage]);
 
-    appendOutput(`# the ${selectedLanguage} output will be displayed here`);
+  document.title = selectedLanguage + " Online Editor";
+  document
+    .querySelector("#langs")
+    .querySelectorAll("span")
+    .forEach((element) =>
+      element.getAttribute("lang") === selectedLanguage
+        ? element.classList.add("selected")
+        : null
+    );
 
-    document
-      .querySelector("#langs")
-      .querySelectorAll("span")
-      .forEach((element) =>
-        element.getAttribute("lang") === selectedLanguage
-          ? element.classList.add("selected")
-          : null
-      );
-  }
+  appendOutput(`# the ${selectedLanguage} output will be displayed here`);
 
   editor.session.on("change", function () {
     if (timeOut) clearTimeout(timeOut);
@@ -85,3 +86,12 @@ const execute = async () => {
     }
   });
 })();
+
+document.querySelector("#download").addEventListener("click", () =>
+  saveAs(
+    new Blob([editor.getValue()], {
+      type: "text/plain;charset=utf-8",
+    }),
+    `${UUID.split("-")[0]}.${selectedLanguage.toLowerCase()}`
+  )
+);

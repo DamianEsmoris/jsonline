@@ -1,10 +1,10 @@
 const aceEditor = document.querySelector("#aceEditor");
 const aceOutput = document.querySelector("#aceOutput");
-let selectedLanguage = "js";
+let selectedLanguage;
 
 const LANGUAGES = {
-  js: "ace/mode/javascript",
-  php: "ace/mode/php",
+  JS: "ace/mode/javascript",
+  PHP: "ace/mode/php",
   undefined: "ace/mode/text",
 };
 

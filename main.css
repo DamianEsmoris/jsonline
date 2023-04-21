@@ -14,9 +14,10 @@ body {
 
   display: inline-flex;
   align-items: center;
+  gap: 2.5px;
 }
 
-#execute {
+.toolbar > span {
   font-size: 1.2em;
 }
 
@@ -67,6 +68,10 @@ body {
 
 .editor {
   flex: 1;
+}
+
+#aceOutput .ace_cursor-layer {
+  display: none;
 }
 
 div#aceOutput {
