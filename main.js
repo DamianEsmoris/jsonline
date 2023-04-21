@@ -32,7 +32,7 @@ const execute = async () => {
   formData.append("code", editor.getValue());
   formData.append("lang", selectedLanguage);
 
-  fetch("http://apoloray.freeddns.org:5050/", {
+  fetch("https://apoloray.freeddns.org:5050/", {
     method: "POST",
     body: formData,
   })
