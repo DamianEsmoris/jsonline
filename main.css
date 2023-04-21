@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: "Fira Code", roboto;
+  overflow: initial;
+}
+
+.toolbar {
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(90deg, #2e3029, #21221d);
+  color: #b6b6b6;
+  height: 20px;
+  width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+#execute {
+  font-size: 1.2em;
+}
+
+.toolbar span {
+  cursor: pointer;
+  user-select: none;
+}
+
+.toolbar span:hover {
+  filter: brightness(1.2);
+}
+
+.toolbar > section {
+  margin: auto;
+  margin-right: 0;
+  display: inherit;
+}
+
+.toolbar > section > span {
+  padding: 0 4px;
+}
+
+.toolbar > section > .selected {
+  backdrop-filter: brightness(1.2);
+}
+
+.toolbar > section > .selected:hover {
+  filter: none;
+}
+
+.ace_gutter,
+.ace_content,
+.ace_line {
+  padding-top: 5px;
+}
+
+.editor-container {
+  position: fixed;
+  width: 100vw;
+  height: calc(100vh - 20px);
+  display: flex;
+  background: #272822;
+}
+
+.editor-container .editor:first-child {
+  flex: 2;
+}
+
+.editor {
+  flex: 1;
+}
+
+div#aceOutput {
+  border-left: 2px #2f3129 solid;
+}
+
+.ace_scrollbar.ace_scrollbar-v {
+  width: fit-content !important;
+  background: red;
+  mix-blend-mode: overlay;
+}
+
+.ace_scrollbar.ace_scrollbar-h {
+  display: none;
+}
