@@ -38,3 +38,6 @@ const appendOutput = (str, breakeLines = 1) => {
 
 const editor = ace.edit("aceEditor");
 const output = ace.edit("aceOutput");
+
+editor.renderer.setScrollMargin(10, 10);
+output.renderer.setScrollMargin(10, 10);

@@ -48,12 +48,6 @@ body {
   filter: none;
 }
 
-.ace_gutter,
-.ace_content,
-.ace_line {
-  padding-top: 5px;
-}
-
 .editor-container {
   position: fixed;
   width: 100vw;
